@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../provider/details_info.dart';
 import 'package:provider/provider.dart';
 import './details_page/details_top_area.dart';
 import './details_page/details_explain.dart';
 import './details_page/details_tabbar.dart';
+import './details_page/details_web.dart';
+import './details_page/details_bottom.dart';
 
 class DetailsPage extends StatelessWidget {
   final String goodsId;
@@ -24,14 +27,24 @@ class DetailsPage extends StatelessWidget {
         future: _getBackInfo(context),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Container(
-              child: ListView(
-                children: [
-                  DetailTopArea(),
-                  DetailsExplain(),
-                  DetailsTabbar(),
-                ],
-              ),
+            return Stack(
+              children: [
+                Container(
+                  child: ListView(
+                    children: [
+                      DetailTopArea(),
+                      DetailsExplain(),
+                      DetailsTabbar(),
+                      DetailsWeb(),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  child: DetailsBottom(),
+                ),
+              ],
             );
           } else {
             return Text('加载中');

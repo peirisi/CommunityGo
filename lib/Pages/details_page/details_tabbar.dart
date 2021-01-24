@@ -68,7 +68,7 @@ class DetailsTabbar extends StatelessWidget {
           ),
         ),
         child: Text(
-          '详情',
+          '评论',
           style: TextStyle(
             color: isRight ? Colors.pink : Colors.black,
           ),

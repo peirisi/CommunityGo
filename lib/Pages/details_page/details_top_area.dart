@@ -6,10 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class DetailTopArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var goodsInfo = context.watch<DetailsInfoProvide>().goodsInfo.data.goodInfo;
-    if (goodsInfo == null) {
+    if (context.watch<DetailsInfoProvide>().goodsInfo == null) {
       return Text('暂时没有数据');
     } else {
+      var goodsInfo =
+          context.watch<DetailsInfoProvide>().goodsInfo.data.goodInfo;
       return Container(
         color: Colors.white,
         child: Column(

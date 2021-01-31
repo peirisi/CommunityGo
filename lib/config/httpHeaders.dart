@@ -1,5 +1,3 @@
-import 'dart:io';
-
 const httpHeaders = {
   'Accept': '*/*',
   'Accept-Encoding': 'gzip, deflate, br',

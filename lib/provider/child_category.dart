@@ -11,7 +11,6 @@ class ChildCategory with ChangeNotifier {
   //大类切换逻辑
   getChildCategory(List<BxMallSubDto> list, String id) {
     page = 1;
-    String noMoreText = '加载中';
     childIndex = 0;
     categoryId = id;
     BxMallSubDto all = BxMallSubDto();
@@ -27,7 +26,6 @@ class ChildCategory with ChangeNotifier {
   //改变子类索引
   changeChildIndex(index, String id) {
     page = 1;
-    String noMoreText = '';
     childIndex = index;
     subId = id;
     notifyListeners();

@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage>
   String homePageContent = '正在获取数据';
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     var formData = {'lon': '115.02932', 'lat': '35.76189'};
     return Scaffold(
         appBar: AppBar(

@@ -27,9 +27,9 @@ class DetailsPage extends StatelessWidget {
         future: _getBackInfo(context),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Stack(
+            return Column(
               children: [
-                Container(
+                Flexible(
                   child: ListView(
                     children: [
                       DetailTopArea(),
@@ -39,9 +39,7 @@ class DetailsPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
+                Container(
                   child: DetailsBottom(),
                 ),
               ],

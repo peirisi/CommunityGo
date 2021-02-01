@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import '../provider/cart.dart';
 import './cart_page/cart_item.dart';
 import './cart_page/cart_bottom.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartPage extends StatelessWidget {
   @override
@@ -18,18 +17,18 @@ class CartPage extends StatelessWidget {
           if (snapshot.hasData) {
             List cartList = context.watch<CartProvider>().cartList;
             // print(context.watch<CartProvider>().totalCount);
-            return Stack(
+            return Column(
               children: [
-                ListView.builder(
-                  itemCount: cartList.length,
-                  itemBuilder: (context, index) {
-                    return CartItem(cartList[index]);
-                  },
+                Flexible(
+                  child: ListView.builder(
+                    itemCount: cartList.length,
+                    itemBuilder: (context, index) {
+                      return CartItem(cartList[index]);
+                    },
+                  ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  child: CaetBottom(),
+                Container(
+                  child: CartBottom(),
                 )
               ],
             );

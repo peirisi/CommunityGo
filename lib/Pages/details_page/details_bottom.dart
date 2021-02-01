@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../provider/cart.dart';
 import '../../provider/details_info.dart';
+import '../../provider/CurentIndex.dart';
 
 class DetailsBottom extends StatelessWidget {
   @override
@@ -19,17 +20,40 @@ class DetailsBottom extends StatelessWidget {
       height: 80.h,
       child: Row(
         children: [
-          InkWell(
-            onTap: () {},
-            child: Container(
-              width: 110.w,
-              alignment: Alignment.center,
-              child: Icon(
-                Icons.shopping_cart,
-                size: 35,
-                color: Colors.red,
+          Stack(
+            children: [
+              InkWell(
+                onTap: () {
+                  context.read<CurrentIndexProvider>().changeIndex(2);
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  width: 110.w,
+                  alignment: Alignment.center,
+                  child: Icon(
+                    Icons.shopping_cart,
+                    size: 35,
+                    color: Colors.red,
+                  ),
+                ),
               ),
-            ),
+              Positioned(
+                top: 0,
+                right: 0,
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(6, 3, 6, 3),
+                  decoration: BoxDecoration(
+                    color: Colors.orange,
+                    border: Border.all(width: 2, color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    '${context.watch<CartProvider>().totalCount}',
+                    style: TextStyle(color: Colors.white, fontSize: 20.sp),
+                  ),
+                ),
+              )
+            ],
           ),
           InkWell(
             onTap: () async {

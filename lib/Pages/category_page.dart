@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../provider/child_category.dart';
 import '../provider/category_goods_list.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import '../routers/application.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -135,7 +136,6 @@ class RightCategoryNav extends StatefulWidget {
 }
 
 class _RightCategoryNavState extends State<RightCategoryNav> {
-  // List list = ['名酒', '宝丰', '北京二锅头', '舍得', '五粮液', '茅台', '散白'];
   @override
   Widget build(BuildContext context) {
     List list = context.watch<ChildCategory>().childCategoryList;
@@ -228,9 +228,6 @@ class _CategoryGoodsListState extends State<CategoryGoodsList> {
                 textColor: Colors.pink,
                 infoColor: Colors.pink,
                 infoText: context.watch<ChildCategory>().noMoreText,
-                // loadReadyText: '上拉加载',
-                // loadText: 'loadtext是什么',
-                // loadingText: '正在加载',
                 loadedText: '加载完成了',
               ),
               child: ListView.builder(
@@ -322,7 +319,10 @@ class _CategoryGoodsListState extends State<CategoryGoodsList> {
 
   Widget _listWidget(List<CategoryListData> list, int index) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Application.router
+            .navigateTo(context, '/detail?id=${list[index].goodsId}');
+      },
       child: Container(
         padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
         decoration: BoxDecoration(

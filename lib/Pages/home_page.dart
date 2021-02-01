@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage>
     var formData = {'lon': '115.02932', 'lat': '35.76189'};
     return Scaffold(
         appBar: AppBar(
-          title: Text('百姓生活+'),
+          title: Text('社区购'),
         ),
         body: FutureBuilder(
           future: request('homePageContext', formData: formData),

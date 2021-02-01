@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Pages/cart_page/cart_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import '../model/cartInfo.dart';
@@ -40,8 +39,6 @@ class CartProvider with ChangeNotifier {
     }
 
     cartString = json.encode(tempList).toString();
-    // print('字符串>>>>>>>>>>>>>>>>>>>>>>>>>>>$cartString');
-    // print('数据模型>>>>>>>>>>>>>>>>>>>>>>>>>$cartList');
     prefs.setString('cartInfo', cartString);
     totalCount += count;
     totalPrice += price * count;

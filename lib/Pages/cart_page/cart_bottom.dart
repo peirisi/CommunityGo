@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../provider/cart.dart';
 
-class CaetBottom extends StatelessWidget {
+class CartBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

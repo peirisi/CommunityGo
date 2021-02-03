@@ -4,7 +4,7 @@ import '../model/category.dart';
 class ChildCategory with ChangeNotifier {
   List<BxMallSubDto> childCategoryList = [];
   int childIndex = 0; //子类高亮索引
-  String categoryId = '2c9f6c946cd22d7b016cd74220b70040'; //大类第一页ID
+  String categoryId; //大类第一页ID
   String subId = ''; //小类ID
   int page = 1; //页数
   String noMoreText = ''; //没有数据时显示的文字

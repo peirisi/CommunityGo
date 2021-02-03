@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Pages/index_page.dart';
 import 'package:provider/provider.dart';
-import './provider/counter.dart';
 import './provider/child_category.dart';
 import './provider/category_goods_list.dart';
 import './provider/details_info.dart';
@@ -16,7 +15,6 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => Counter()),
         ChangeNotifierProvider(create: (_) => ChildCategory()),
         ChangeNotifierProvider(create: (_) => CategoryGoodsListProvider()),
         ChangeNotifierProvider(create: (_) => DetailsInfoProvide()),
@@ -39,10 +37,10 @@ class MyApp extends StatelessWidget {
       designSize: Size(750, 1334),
       child: Container(
         child: MaterialApp(
-          title: 'XXXX',
+          title: '社区购',
           onGenerateRoute: Application.router.generator,
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(primaryColor: Colors.pink),
+          theme: ThemeData(primaryColor: Color(0xFF7fca3e)),
           home: IndexPage(),
         ),
       ),

@@ -16,7 +16,6 @@ class CartPage extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List cartList = context.watch<CartProvider>().cartList;
-            // print(context.watch<CartProvider>().totalCount);
             return Column(
               children: [
                 Flexible(

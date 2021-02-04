@@ -21,6 +21,7 @@ class CartBottom extends StatelessWidget {
 
   Widget _selectAllBtn(BuildContext context) {
     return Container(
+      width: 180.w,
       child: Row(
         children: [
           Checkbox(
@@ -39,22 +40,19 @@ class CartBottom extends StatelessWidget {
   Widget _allPriceArea(BuildContext context) {
     double totalPrice = context.watch<CartProvider>().totalPrice;
     return Container(
-      width: 410.w,
+      width: 350.w,
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                alignment: Alignment.centerRight,
-                width: 260.w,
                 child: Text(
                   '合计:',
-                  style: TextStyle(fontSize: 36.sp),
+                  style: TextStyle(fontSize: 30.sp),
                 ),
               ),
               Container(
-                alignment: Alignment.centerRight,
-                width: 150.w,
                 child: Text(
                   '￥ ${totalPrice.toStringAsFixed(2)}',
                   style: TextStyle(
@@ -66,13 +64,13 @@ class CartBottom extends StatelessWidget {
             ],
           ),
           Container(
-            width: 410.w,
+            // width: 390.w,
             alignment: Alignment.centerRight,
             child: Text(
               '满10元免配送费，预购免配送费',
               style: TextStyle(
                 color: Colors.black38,
-                fontSize: 22.sp,
+                fontSize: 20.sp,
               ),
             ),
           ),
@@ -81,24 +79,22 @@ class CartBottom extends StatelessWidget {
     );
   }
 
-  //结算按钮
   Widget _checkBtn(BuildContext context) {
     return Container(
-      width: 170.w,
-      padding: EdgeInsets.only(left: 10),
-      child: InkWell(
-        onTap: () {},
-        child: Container(
-          padding: EdgeInsets.all(10),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              color: Colors.red, borderRadius: BorderRadius.circular(3.r)),
-          child: Text(
-            '结算(${context.watch<CartProvider>().totalCount})',
-            style: TextStyle(
-              color: Colors.white,
-              // fontSize: 36.sp,
-            ),
+      width: 200.w,
+      alignment: Alignment.center,
+      child: FlatButton(
+        onPressed: () async {
+          await context.read<CartProvider>().removeSelect();
+        },
+        color: Color(0xFF7fca3e),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        child: Text(
+          '结算(${context.watch<CartProvider>().totalCount})',
+          style: TextStyle(
+            color: Colors.white,
+            // fontSize: 36.sp,
           ),
         ),
       ),

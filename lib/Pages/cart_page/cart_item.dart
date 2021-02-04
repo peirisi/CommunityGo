@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/routers/application.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../model/cartInfo.dart';
 import './cart_count.dart';
@@ -11,7 +12,6 @@ class CartItem extends StatelessWidget {
   CartItem(this.item);
   @override
   Widget build(BuildContext context) {
-    // print(item);
     return Container(
       margin: EdgeInsets.fromLTRB(5.w, 2.h, 5.w, 2.h),
       padding: EdgeInsets.fromLTRB(5.w, 10.h, 5.w, 10.h),
@@ -24,13 +24,18 @@ class CartItem extends StatelessWidget {
           ),
         ),
       ),
-      child: Row(
-        children: [
-          _cartCheckBt(context, item),
-          _cartImage(),
-          _cartGoodsName(),
-          _cartPrice(context),
-        ],
+      child: InkWell(
+        onTap: () {
+          Application.router.navigateTo(context, '/detail?id=${item.goodsId}');
+        },
+        child: Row(
+          children: [
+            _cartCheckBt(context, item),
+            _cartImage(),
+            _cartGoodsName(),
+            _cartPrice(context),
+          ],
+        ),
       ),
     );
   }

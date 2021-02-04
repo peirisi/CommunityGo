@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
+import '../../provider/CurentIndex.dart';
 import '../../provider/cart.dart';
 import '../../provider/details_info.dart';
-import '../../provider/CurentIndex.dart';
 
 class DetailsBottom extends StatelessWidget {
   @override
@@ -22,15 +23,14 @@ class DetailsBottom extends StatelessWidget {
         children: [
           Stack(
             children: [
-              InkWell(
-                onTap: () {
-                  context.read<CurrentIndexProvider>().changeIndex(2);
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  width: 110.w,
-                  alignment: Alignment.center,
-                  child: Icon(
+              Container(
+                margin: EdgeInsets.only(left: 20.w),
+                child: IconButton(
+                  onPressed: () {
+                    context.read<CurrentIndexProvider>().changeIndex(2);
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
                     Icons.shopping_cart,
                     size: 35,
                     color: Colors.red,
@@ -55,38 +55,50 @@ class DetailsBottom extends StatelessWidget {
               )
             ],
           ),
-          InkWell(
-            onTap: () async {
-              await context
-                  .read<CartProvider>()
-                  .save(goodsId, goodsName, count, price, images);
-            },
-            child: Container(
-              alignment: Alignment.center,
-              width: 320.w,
-              height: 80.h,
-              color: Colors.green,
-              child: Text(
-                '加入购物车',
-                style: TextStyle(color: Colors.white, fontSize: 28.sp),
-              ),
+          Container(
+            width: 620.w,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                FlatButton(
+                  onPressed: () async {
+                    await context
+                        .read<CartProvider>()
+                        .save(goodsId, goodsName, count, price, images);
+                  },
+                  minWidth: 280.w,
+                  height: 80.h,
+                  color: Color(0xFF7fca3e),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    bottomLeft: Radius.circular(30),
+                  )),
+                  child: Text(
+                    '加入购物车',
+                    style: TextStyle(color: Colors.white, fontSize: 28.sp),
+                  ),
+                ),
+                FlatButton(
+                  onPressed: () async {
+                    await context.read<CartProvider>().remove();
+                  },
+                  minWidth: 280.w,
+                  height: 80.h,
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
+                  )),
+                  child: Text(
+                    '立即购买',
+                    style: TextStyle(color: Colors.white, fontSize: 28.sp),
+                  ),
+                ),
+              ],
             ),
-          ),
-          InkWell(
-            onTap: () async {
-              await context.read<CartProvider>().remove();
-            },
-            child: Container(
-              alignment: Alignment.center,
-              width: 320.w,
-              height: 80.h,
-              color: Colors.red,
-              child: Text(
-                '立即购买',
-                style: TextStyle(color: Colors.white, fontSize: 28.sp),
-              ),
-            ),
-          ),
+          )
         ],
       ),
     );

@@ -53,6 +53,21 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  removeSelect() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    cartString = prefs.getString('cartInfo');
+    List<Map> tempList = (json.decode(cartString) as List).cast();
+    List<Map> modifyList = [];
+    for (var item in tempList) {
+      if (item['isCheck'] == false) {
+        modifyList.add(item);
+      }
+    }
+    cartString = json.encode(modifyList).toString();
+    prefs.setString('cartInfo', cartString);
+    await getCartInfo();
+  }
+
   getCartInfo() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     cartString = prefs.getString('cartInfo');

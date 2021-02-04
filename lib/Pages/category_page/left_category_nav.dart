@@ -19,8 +19,9 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
   var listIndex = 0;
   @override
   Widget build(BuildContext context) {
+    print('全部刷新');
     return Container(
-      width: ScreenUtil().setWidth(180),
+      width: 180.w,
       decoration: BoxDecoration(
           border: Border(right: BorderSide(width: 1, color: Colors.black12))),
       child: ListView.builder(

@@ -19,6 +19,7 @@ class DetailsBottom extends StatelessWidget {
       width: 750.w,
       color: Colors.white,
       height: 80.h,
+      margin: EdgeInsets.only(top: 5.h, bottom: 5.h),
       child: Row(
         children: [
           Stack(

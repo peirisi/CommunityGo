@@ -23,7 +23,7 @@ class MemberPage extends StatelessWidget {
     return Container(
       width: 750.w,
       padding: EdgeInsets.all(20),
-      color: Colors.red[400],
+      color: Colors.black12,
       child: Column(
         children: [
           Container(
